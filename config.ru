@@ -7,8 +7,7 @@ if development?
 end
 require 'sinatra/cometio'
 
-require File.dirname(__FILE__)+'/bootstrap'
-Bootstrap.init :helpers, :controllers
+require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
 
