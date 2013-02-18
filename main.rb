@@ -9,6 +9,11 @@ CometIO.on :connect do |session|
   CometIO.push :chat, {:name => "system", :message => "welcome <#{session}>"}, {:to => session}
 end
 
+CometIO.on :disconnect do |session|
+  puts "disconnect client <#{session}>"
+  CometIO.push :chat, {:name => "system", :message => "bye <#{session}>"}
+end
+
 EM::defer do
   loop do
     CometIO.push :chat, :name => 'clock', :message => Time.now.to_s
